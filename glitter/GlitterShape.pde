@@ -10,11 +10,11 @@ class GlitterShape {
 
   ArrayList<float[]> pointsPos;
 
-  GlitterShape(int x, int y, float density, String SVGnum, float obS) {
+  GlitterShape(int x, int y, float density, String SVGnum, float obSX,float obSY) {
     obj = RG.loadShape(SVGnum);
     pointsPos = new ArrayList();
     obj.centerIn(g, 1, 1, 1);
-    obj.scale(obS, obS);
+    obj.scale(obSX, obSY);
     obj.translate(40, 40);
     this.posX=x;
     this.posY=y;
@@ -28,13 +28,21 @@ class GlitterShape {
   void drawGlitter() {
 
     pushMatrix();
-    translate(posX, posY);
-
+    translate(posX-objTranslateX, posY-objTranslateY);
+          //println(posY);
+       //color c =img.get((int)posX,(int)posY);
+       //println("H: "+ hue(c));
+       //println("S: "+ saturation(c));
+       //println("B: "+ brightness(c));
     //obj.draw();
     //translate(-gWidth/2, -gHeight/2+20);
     for (int i=0; i<pointsPos.size(); i++) {
-        strokeWeight(1);
-      stroke(random(180, 220), random(100, 255), 255);
+        strokeWeight(.75);
+       color c =img.get((int)(pointsPos.get(i)[0]+posX-objTranslateX),(int)(pointsPos.get(i)[1])+posY-objTranslateY);
+       //println("H: "+ hue(c));
+       //println("S: "+ saturation(c));
+      stroke(random(hue(c)*.9, hue(c)), random(saturation(c)-80, saturation(c)-40), random(brightness(c)+10, brightness(c)+100));
+      //stroke(random(0, 50), random(saturation(c)+30, saturation(c)+60), random(brightness(c)+10, brightness(c)+100));
       point(pointsPos.get(i)[0], pointsPos.get(i)[1]);
     }
     //RPoint p = new RPoint(mouseX-width/2, mouseY-height/2);
@@ -56,7 +64,8 @@ class GlitterShape {
 
       RPoint p = new RPoint(tab[0], tab[1]);
       if (obj.contains(p)) {
-        pointsPos.add(tab);
+        pointsPos.add(tab); //<>//
+        //println("x: "+(pointsPos.get(i)[0]+posX)+" y: "+ (pointsPos.get(i)[1])+posY);
         i++;
       }
     }
