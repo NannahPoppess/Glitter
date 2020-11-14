@@ -1,0 +1,124 @@
+{
+  "buttons": [
+    {
+      "name": "b1",
+      "SVGnum": "SVG/1.svg",
+      "defaultScale": 0.11,
+      "buttonImg": "b1/b1_n.png",
+      "buttonImgActive": "b1/b1_a.png",
+      "buttonImgClicked": "b1/b1_p.png",
+      "key": "1",
+      "label": "Shape perfect for eyebrows or eyelids"
+    },
+    {
+      "name": "b2",
+      "SVGnum": "SVG/2.svg",
+      "defaultScale": 0.07,
+      "buttonImg": "b2/b2_n.png",
+      "buttonImgActive": "b2/b2_a.png",
+      "buttonImgClicked": "b2/b2_p.png",
+      "key": "2",
+      "label": "Shape perfect for outside part of eyelids"
+    },
+    {
+      "name": "b3",
+      "SVGnum": "SVG/3.svg",
+      "defaultScale": 0.07,
+      "buttonImg": "b3/b3_n.png",
+      "buttonImgActive": "b3/b3_a.png",
+      "buttonImgClicked": "b3/b3_p.png",
+      "key": "3",
+      "label": "Shape perfect for contouring nose"
+    },
+    {
+      "name": "b4",
+      "SVGnum": "SVG/4.svg",
+      "defaultScale": 0.09,
+      "buttonImg": "b4/b4_n.png",
+      "buttonImgActive": "b4/b4_a.png",
+      "buttonImgClicked": "b4/b4_p.png",
+      "key": "4",
+      "label": "Shape perfect for place below eye"
+    },
+    {
+      "name": "b5",
+      "SVGnum": "SVG/5.svg",
+      "defaultScale": 0.06,
+      "buttonImg": "b5/b5_n.png",
+      "buttonImgActive": "b5/b5_a.png",
+      "buttonImgClicked": "b5/b5_p.png",
+      "key": "5",
+      "label": "Shape perfect for making eye corner sharp"
+    },
+    {
+      "name": "b6",
+      "SVGnum": "SVG/6.svg",
+      "defaultScale": 0.04,
+      "buttonImg": "b6/b6_n.png",
+      "buttonImgActive": "b6/b6_a.png",
+      "buttonImgClicked": "b6/b6_p.png",
+      "key": "6",
+      "label": "Shape perfect for glittering tip of nose"
+    },
+    {
+      "name": "b7",
+      "SVGnum": "SVG/7.svg",
+      "defaultScale": 0.04,
+      "buttonImg": "b7/b7_n.png",
+      "buttonImgActive": "b7/b7_a.png",
+      "buttonImgClicked": "b7/b7_p.png",
+      "key": "7",
+      "label": "Shape perfect for top lip"
+    },
+    {
+      "name": "b8",
+      "SVGnum": "SVG/8.svg",
+      "defaultScale": 0.04,
+      "buttonImg": "b8/b8_n.png",
+      "buttonImgActive": "b8/b8_a.png",
+      "buttonImgClicked": "b8/b8_p.png",
+      "key": "8",
+      "label": "Shape perfect for lower lip"
+    },
+    {
+      "name": "b9",
+      "SVGnum": "SVG/9.svg",
+      "defaultScale": 0.04,
+      "buttonImg": "b9/b9_n.png",
+      "buttonImgActive": "b9/b9_a.png",
+      "buttonImgClicked": "b9/b9_p.png",
+      "key": "9",
+      "label": "Shape perfect for center of bottom lip"
+    },
+    {
+      "name": "b10",
+      "SVGnum": "SVG/10.svg",
+      "defaultScale": 0.07,
+      "buttonImg": "b10/b10_n.png",
+      "buttonImgActive": "b10/b10_a.png",
+      "buttonImgClicked": "b10/b10_p.png",
+      "key": "0",
+      "label": "Shape perfect for glittering cheeks"
+    },
+    {
+      "name": "b11",
+      "SVGnum": "SVG/11.svg",
+      "defaultScale": 0.03,
+      "buttonImg": "b11/b11_n.png",
+      "buttonImgActive": "b11/b11_a.png",
+      "buttonImgClicked": "b11/b11_p.png",
+      "key": "p",
+      "label": "Shape perfect for glitter tears, nose and whatever you want"
+    },
+    {
+      "name": "b12",
+      "SVGnum": "SVG/12.svg",
+      "defaultScale": 0.075,
+      "buttonImg": "b12/b12_n.png",
+      "buttonImgActive": "b12/b12_a.png",
+      "buttonImgClicked": "b12/b12_p.png",
+      "key": "[",
+      "label": "Shape perfect for chin"
+    }
+  ]
+}

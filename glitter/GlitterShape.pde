@@ -19,7 +19,7 @@ class GlitterShape { //<>//
     obj.translate(40, 40);
     this.posX=x;
     this.posY=y;
-    glitterNum = obj.width*obj.height/100*density*(50*obSY);
+    glitterNum = obj.getWidth()*obj.getHeight()*density*(50*obSY);
     println("num "+ glitterNum);
     gWidth=obj.width+80;
     gHeight=obj.height;
@@ -30,33 +30,16 @@ class GlitterShape { //<>//
     color c=color(255);
     pushMatrix();
     translate(posX-objTranslateX, posY-objTranslateY);
-    //println(posY);
-    //color c =img.get((int)posX,(int)posY);
-    //println("H: "+ hue(c));
-    //println("S: "+ saturation(c));
-    //println("B: "+ brightness(c));
-    //obj.draw();
-    //translate(-gWidth/2, -gHeight/2+20);
+    
     for (int i=0; i<pointsPos.size(); i++) {
       strokeWeight(.75);
       if ((i%2==0)||(i==0))
         c =img.get((int)(pointsPos.get(i)[0]+posX-objTranslateX), (int)(pointsPos.get(i)[1])+posY-objTranslateY);
-      //println("H: "+ hue(c));
-      //println("S: "+ saturation(c));
+
       stroke(random(hue(c)*.9, hue(c)), random(saturation(c)-80, saturation(c)-40), random(brightness(c)+10, brightness(c)+100));
       //stroke(random(0, 50), random(saturation(c)+30, saturation(c)+60), random(brightness(c)+10, brightness(c)+100));
       point(pointsPos.get(i)[0], pointsPos.get(i)[1]);
     }
-    //RPoint p = new RPoint(mouseX-width/2, mouseY-height/2);
-    //for (int i=0; i<obj.countChildren(); i++) {
-    //  if (obj.children[i].contains(p)) {
-    //    RG.ignoreStyles(true);
-    //    fill(0, 100, 255, 250);
-    //    noStroke();
-    //    obj.children[i].draw();
-    //    RG.ignoreStyles(ignoringStyles);
-    //  }
-    // }
     popMatrix();
   }
   void addGlitter() {
@@ -93,8 +76,7 @@ class GlitterShape { //<>//
       strokeWeight(.75);
       if ((i%2==0)||(i==0))
         c =img.get((int)(pointsPos.get(i)[0]+posX-objTranslateX), (int)(pointsPos.get(i)[1])+posY-objTranslateY);
-      //println("H: "+ hue(c));
-      //println("S: "+ saturation(c));
+        
       stroke(random(hue(c)*.9, hue(c)), random(saturation(c)-80, saturation(c)-40), random(brightness(c)+10, brightness(c)+100));
       //stroke(random(0, 50), random(saturation(c)+30, saturation(c)+60), random(brightness(c)+10, brightness(c)+100));
       point(pointsPos.get(i)[0], pointsPos.get(i)[1]);
