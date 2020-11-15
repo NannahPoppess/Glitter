@@ -11,70 +11,24 @@ class UI {
     this.prefix = thePrefix;
     createDensitySlider();
     drawUIBackground();
-
-    //   // create a new button with name 'buttonA'
-    //cp5.addButton("colorA")
-    //   .setValue(0)
-    //   .setPosition(100,100)
-    //   .setSize(200,19)
-    //   ;
-
-    //// and add another 2 buttons
-    //cp5.addButton("colorB")
-    //   .setValue(100)
-    //   .setPosition(100,120)
-    //   .setSize(200,19)
-    //   ;
-
-    //cp5.addButton("colorC")
-    //   .setPosition(100,140)
-    //   .setSize(200,19)
-    //   .setValue(0)
-    //   ;
-
-    //PImage[] imgs = {loadImage("b1.png"), loadImage("b2.png"), loadImage("b3.png"), 
-    //  loadImage("b4.png"), loadImage("b5.png"), loadImage("b6.png"), loadImage("b7.png"), 
-    //  loadImage("b8.png"), loadImage("b9.png"), loadImage("b10.png"), loadImage("b11.png"), loadImage("b12.png"), loadImage("bDen.png")};
-    //for (int i=0; i<imgs.length-1; i++) {
-    //  cp5.addButton("b"+i+1)
-    //   // .setValue(128)
-    //    .setPosition(imageResX, 105*i)
-    //    .setImages(imgs[i], imgs[imgs.length-1], imgs[i])
-    //    .updateSize()
-    //    .setId(i+1)
-    //    .plugTo( this, "setShape" )
-    //    ;
-    //}
+    
     for (int i=0; i<buttons.length; i++) {
-      buttons[i].createButton(imageResX, 105*i, i+1, "setShape");
-      //cp5.addButton("b"+i+1)
-      // // .setValue(128)
-      //  .setPosition(imageResX, 105*i)
-      //  .setImages(imgs[i], imgs[imgs.length-1], imgs[i])
-      //  .updateSize()
-      //  .setId(i+1)
-      //  .plugTo( this, "setShape" )
-      //  ;
+      buttons[i].createButton(imageResX, 105*i, i+1);
     }
     for (int i=0; i<otherButtons.length; i++) {
-      otherButtons[i].createButton(0, imageResY, i+31, "setDensity");
+      if (i==0)
+      otherButtons[i].createButton(0, imageResY, i+31);
+      else if (i==2)
+      otherButtons[i].createButtonToggle(imageResX-(i*105)+5, imageResY, i+31);
+      else
+      otherButtons[i].createButton(imageResX-(i*100), imageResY, i+31);
     }
-    //cp5.addButton("bDen")
-    // // .setValue(128)
-    //  .setPosition(0, imageResY)
-    //  .setImage(imgs[imgs.length-1])
-    //  .updateSize()
-    //  .setId(31)
-    //  .plugTo( this, "setDensity" )
-    //  ;
   }
 
   void setDensity(float theValue) {
     value = theValue;
   }
 
-  void setShape() {
-  }
 
   void createDensitySlider() {
     cp5.addSlider( "density" )
@@ -90,6 +44,7 @@ class UI {
       .setId(30)
       ;
   }
+  
   void drawUIBackground() {
     fill(0, 0, 20);
     stroke(0, 0, 15);
@@ -179,4 +134,57 @@ void mouseClicked() {
     GlitterShape g= new GlitterShape(x, y, density, SVGnum, objScaleX, objScaleY);
     glitterShapes.add(g);
   }
+}
+Button[] buttons;
+Button[] otherButtons;
+void loadData() {
+  // Load JSON file
+  // Temporary full path until path problem resolved.
+
+ buttons= loadJSON("shapeButtons.json", "buttons");
+ otherButtons= loadJSON("functionalButtons.json", "buttons");
+
+
+}
+
+Button[] loadJSON(String fileName, String arrayName) {
+  Button[] buts;
+  json = loadJSONObject(fileName);
+
+  JSONArray buttonsData = json.getJSONArray(arrayName);
+  buts= new Button[buttonsData.size()];
+  for (int i = 0; i < buttonsData.size(); i++) {
+    // Get each object in the array
+    JSONObject button = buttonsData.getJSONObject(i); 
+    String name = button.getString("name");
+    String SVGNum;
+    float defaultScale;
+
+    String[] imgs ={button.getString("buttonImg"), button.getString("buttonImgActive"), button.getString("buttonImgClicked") };
+    String keyCh = button.getString("key");
+    String keyCh2;
+
+    String function = button.getString("function"); 
+    String label = button.getString("label");
+
+    if ( button.hasKey("SVGnum")) {
+      SVGNum = button.getString("SVGnum");
+     defaultScale = button.getFloat("defaultScale");
+      buts[i] = new Button(name, SVGNum, defaultScale, imgs, keyCh, function, label);
+    }
+
+    else if ( button.hasKey("key2")) {
+      keyCh2 = button.getString("key2"); 
+     defaultScale = button.getFloat("defaultDensity");
+      buts[i] = new Button(name, defaultScale, imgs, keyCh, keyCh2, function, label);
+    }
+    else if(button.hasKey("buttonImgAlt")){
+    String[] imgsAlt ={button.getString("buttonImg"), button.getString("buttonImgActive"), button.getString("buttonImgClicked") };
+    buts[i] = new Button(name, imgs, imgsAlt, keyCh, function, label);
+    }
+    // Put object in array
+    else  
+    buts[i] = new Button(name, imgs, keyCh, function, label);
+  }
+  return buts;
 }

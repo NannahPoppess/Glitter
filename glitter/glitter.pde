@@ -1,4 +1,4 @@
-import controlP5.*; //<>// //<>// //<>// //<>//
+import controlP5.*; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 import geomerative.*;
 
 
@@ -21,6 +21,8 @@ float theta;
 color c1;
 color c2;
 
+boolean drawGlitterFlag =false;
+
 PImage img;
 ArrayList<GlitterShape> glitterShapes;
 
@@ -29,7 +31,7 @@ int imageResY = 1500;
 UI ui;
 
 void setup() {
-   loadData();
+  loadData();
   frameRate(60);
   colorMode(HSB);
   //rectMode(CENTER);
@@ -72,11 +74,11 @@ void draw() {
 
   //background(2);
   image(img, 0, 0);
-  if ((mouseX<imageResX)&&(mouseY<imageResY)) {
-
+  // if ((mouseX<imageResX)&&(mouseY<imageResY)) {
+  if (drawGlitterFlag)
     drawGlitter();
-  }
-
+  //}
+  drawShape();
   //noLoop();
   popMatrix();
   //clear();
@@ -87,14 +89,17 @@ void drawGlitter() {
   //  if (mouseX<imageResX/2)
   //obj.scale(-1,1);
   drawGlitterShapes();
+}
+
+void drawShape() {
   pushMatrix();
   translate(mouseX, mouseY);
-
-  stroke(255, 80);
-  obj.draw();
-
-
-  popMatrix();
+  if ((mouseX<imageResX)&&(mouseY<imageResY)) {
+    stroke(255, 80);
+    strokeWeight(2);
+    obj.draw();
+  }
+      popMatrix();
 }
 
 void drawGlitterShapes() {
@@ -103,40 +108,4 @@ void drawGlitterShapes() {
     for (int i=0; i< glitterShapes.size(); i++) {
       glitterShapes.get(i).drawMoreGlitter();
     }
-}
-
-Button[] buttons;
-Button[] otherButtons;
-void loadData() {
-  // Load JSON file
-  // Temporary full path until path problem resolved.
-  json = loadJSONObject("shapeButtons.json");
-
-  JSONArray buttonsData = json.getJSONArray("buttons");
-  buttons= new Button[buttonsData.size()];
-  for (int i = 0; i < buttonsData.size(); i++) {
-    // Get each object in the array
-    JSONObject button = buttonsData.getJSONObject(i); 
-    String name = button.getString("name");
-    String SVGNum = button.getString("SVGnum");
-    float defaultScale = button.getFloat("defaultScale");
-    String[] imgs ={button.getString("buttonImg"), button.getString("buttonImgActive"), button.getString("buttonImgClicked") }; //<>//
-    String keyCh = button.getString("key");     //<>//
-    String label = button.getString("label");
-
-    // Put object in array
-    buttons[i] = new Button(name, SVGNum, defaultScale, imgs, keyCh, label);
-  }
-  json = loadJSONObject("functionalButtons.json");
-    buttonsData = json.getJSONArray("buttons");
-   otherButtons= new Button[buttonsData.size()];
-  for (int i = 0; i < buttonsData.size(); i++) {
-    JSONObject button = buttonsData.getJSONObject(i); 
-    String name = button.getString("name");
-    float defaultDensity = button.getFloat("defaultDensity");
-    String[] imgs ={button.getString("buttonImg"), button.getString("buttonImgActive"), button.getString("buttonImgClicked") };
-    String keyCh1 = button.getString("key1");
-    String keyCh2 = button.getString("key2");    
-    String label = button.getString("label");
-    otherButtons[i] = new Button(name, defaultDensity, imgs, keyCh1, keyCh2, label);}
 }

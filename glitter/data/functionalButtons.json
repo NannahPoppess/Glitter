@@ -3,13 +3,34 @@
     {
       "name": "bDen",
       "defaultDensity": 0.06,
-      "buttonImg": "b1/b1_n.png",
-      "buttonImgActive": "b1/b1_a.png",
-      "buttonImgClicked": "b1/b1_p.png",
-      "key1": "1",
-      "key2": "2",
+      "buttonImg": "bDen/bDen_n.png",
+      "buttonImgActive": "bDen/bDen_a.png",
+      "buttonImgClicked": "bDen/bDen_p.png",
+      "key": "+",
+      "key2": "-",
+      "function": "setShape",
       "label": "Shape perfect for eyebrows or eyelids"
+    },
+    {
+      "name": "bSavImg",
+      "buttonImg": "bSavImg/bSavImg_n.png",
+      "buttonImgActive": "bSavImg/bSavImg_a.png",
+      "buttonImgClicked": "bSavImg/bSavImg_p.png",
+      "key": "s",
+      "function": "saveImage",
+      "label": "Saves image as PNG"
+    },
+    {
+      "name": "bGlitterOff",
+      "buttonImg": "bTrnOffGlitt/bTrnOffGlitt_n.png",
+      "buttonImgActive": "bTrnOffGlitt/bTrnOffGlitt_a.png",
+      "buttonImgClicked": "bTrnOffGlitt/bTrnOffGlitt_p.png",
+      "buttonImgAlt": "bTrnOffGlitt/bTrnOnGlitt_a.png",
+      "buttonImgActiveAlt": "bTrnOffGlitt/bTrnOnGlitt_a.png",
+      "buttonImgClickedAlt": "bTrnOffGlitt/bTrnOnGlitt_a.png",
+      "key": "d",
+      "function": "turnOffGlitter",
+      "label": "Turns off the glitter"
     }
-   
   ]
 }
